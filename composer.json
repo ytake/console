@@ -1,0 +1,27 @@
+{
+    "name": "comnect/console",
+    "description": "php console",
+    "minimum-stability": "alpha",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "yuuki.takezawa",
+            "email": "yuuki.takezawa@comnect.jp.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/console": "2.5.*@dev",
+        "illuminate/database": "4.1.*@dev",
+        "illuminate/redis": "4.1.*@dev",
+	 "swiftmailer/swiftmailer": "5.1.*@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Comnect": "src/"
+        }
+    }
+}
