@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "symfony/console": "2.5.*@dev",
+        "symfony/console": "2.3.*@dev",
         "illuminate/database": "4.1.*@dev",
         "illuminate/redis": "4.1.*@dev",
 	 "swiftmailer/swiftmailer": "5.1.*@dev"
