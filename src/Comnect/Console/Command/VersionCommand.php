@@ -12,9 +12,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class VersionCommand extends Command
 {
-	const COMMAND_NAME = "console:version";
+	const COMMAND_NAME = "consoler:version";
 
-	const VERSION = '0.1.2-beta';
+	const VERSION = '0.1.4-beta';
 
 	/**
 	 *
