@@ -1,17 +1,17 @@
 <?php
 namespace Comnect\Console;
 
-use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Application as SymfonyConsole;
 use Comnect\Console\Command;
+
 /**
- * @category console
- * @category core
+ * Class Console
+ * @package Comnect\Console
  * @author yuuki.takezawa<yuuki.takezawa@comnect.jp.net>
  */
 class Console extends SymfonyConsole {
 
-	/** @var \Symfony\Component\Console\Application @var */
+	/** @var \Symfony\Component\Console\Application */
 	private $_application;
 
 	/**
@@ -25,13 +25,12 @@ class Console extends SymfonyConsole {
 		parent::__construct($name, $version);
 		//
 		$this->_application = new SymfonyConsole();
-		// registar commands
+		// register commands
 		$this->_addCommands();
 	}
 
 	/**
-	 *
-	 * @param \Comnect\Console\Application $app
+	 * console boot
 	 */
 	public function boot()
 	{
@@ -41,7 +40,6 @@ class Console extends SymfonyConsole {
 
 	/**
 	 * add application command
-	 * @param ArgvInput $argv
 	 * @return void
 	 */
 	private function _addCommands()
@@ -50,7 +48,6 @@ class Console extends SymfonyConsole {
 		$this->_application->add(new \Comnect\Console\Command\ControllerCommand);
 		// display version
 		$this->_application->add(new \Comnect\Console\Command\VersionCommand);
-
 	}
 
 }

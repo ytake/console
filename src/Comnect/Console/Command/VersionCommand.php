@@ -2,9 +2,7 @@
 namespace Comnect\Console\Command;
 
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -16,12 +14,8 @@ class VersionCommand extends Command
 {
 	const COMMAND_NAME = "console:version";
 
-	const VERSION = '0.1-beta';
+	const VERSION = '0.1.2-beta';
 
-	public function __construct()
-	{
-		parent::__construct();
-	}
 	/**
 	 *
 	 */
@@ -29,7 +23,7 @@ class VersionCommand extends Command
 	{
 		$this->setName(self::COMMAND_NAME)
 			->setDescription('Display this comnect/console version')
-			->addArgument('console:version', InputArgument::OPTIONAL, 'start process');
+			->addArgument('console:version');
 	}
 
 	/**

@@ -1,8 +1,14 @@
 <?php
 namespace Comnect\Support;
-use Comnect\Application;
 
-class Config{
+use Comnect\Support\Config\Interfaces\ConfigInterface;
+/**
+ * Class Config
+ * @package Comnect\Support
+ * @author yuuki.takezawa<yuuki.takeawa@comnect.jp.net>
+ *
+ */
+class Config implements ConfigInterface {
 
 	/**
 	 * get configure file
@@ -10,13 +16,13 @@ class Config{
 	 */
 	public function get($filename)
 	{
-		$environmnetFile = dirname(dirname(dirname(dirname(dirname(dirname(dirname(realpath(__FILE__)))))))) . "/app/config/environment.php";
-		if(!file_exists($environmnetFile))
+		$environmentFile = dirname(dirname(dirname(dirname(dirname(dirname(dirname(realpath(__FILE__)))))))) . "/app/config/environment.php";
+		if(!file_exists($environmentFile))
 		{
-			throw new \ErrorException("not found $environmnetFile", 500);
+			throw new \ErrorException("not found $environmentFile", 500);
 		}
 
-		$configure = require_once $environmnetFile;
+		$configure = require $environmentFile;
 		foreach($configure as $env => $values)
 		{
 			$host = array_search(gethostname(), $values);
@@ -42,15 +48,15 @@ class Config{
 
 	/**
 	 * path information
-	 * @param void
+	 * @param string $name
 	 * @return array
 	 */
-	public function path($e)
+	public function path($name)
 	{
 		$path = [
 			'root' => dirname(dirname(dirname(dirname(dirname(dirname(dirname(realpath(__FILE__)))))))),
 			'config' => dirname(dirname(dirname(dirname(dirname(dirname(dirname(realpath(__FILE__)))))))) . "/app/config",
 		];
-		return $path[$e];
+		return $path[$name];
 	}
 }
