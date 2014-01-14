@@ -1,21 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: takezawa
- * Date: 2014/01/09
- * Time: 15:48
- */
 namespace Comnect\Datastore;
 
+use Comnect\Datastore\Interfaces\DatastoreInterface;
 use Comnect\Support\Config;
-use PDO;
 use Illuminate\Database\Connectors\ConnectionFactory;
 
-class Database {
+/**
+ * Class Database
+ * @package Comnect\Datastore
+ * @author yuuki.takezawa<yuuki.takezawa@comnect.jp.net>
+ */
+class Database implements DatastoreInterface{
 
 	/** @var \Comnect\Support\Config */
 	protected $config;
-	/** @var  Illuminate\Database\Connectors\ConnectionFactory */
+	/** @var  \Illuminate\Database\Connectors\ConnectionFactory */
 	protected $connection;
 
 	public function __construct(Config $config, ConnectionFactory $connection)

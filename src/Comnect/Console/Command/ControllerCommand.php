@@ -31,8 +31,8 @@ class ControllerCommand extends Command
 	protected function configure()
 	{
 		$this->setName(self::COMMAND_NAME)
-			->setDescription('start process')
-			->addArgument('controller', InputArgument::REQUIRED, 'start process');
+			->setDescription('specify the namespace(controller)')
+			->addArgument('controller', InputArgument::REQUIRED, 'specify the namespace(controller)');
 	}
 
 	/**
@@ -50,7 +50,7 @@ class ControllerCommand extends Command
 			$this->container->make($controller)->perform();
 			$output->writeln("perform controller:$controller");
 
-		// refrectionException
+		// reflectionException
 		}catch(\ReflectionException $e){
 			$output->writeln("<error>error! controller:$controller not found</error>");
 		}
