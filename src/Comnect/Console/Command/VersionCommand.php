@@ -23,7 +23,7 @@ class VersionCommand extends Command
 	{
 		$this->setName(self::COMMAND_NAME)
 			->setDescription('Display this comnect/console version')
-			->addArgument('console:version');
+			->addArgument('consoler:version');
 	}
 
 	/**
