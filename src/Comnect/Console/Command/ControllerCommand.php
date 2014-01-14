@@ -14,7 +14,7 @@ use Illuminate\Container\Container;
  */
 class ControllerCommand extends Command
 {
-	const COMMAND_NAME = "controller:perform";
+	const COMMAND_NAME = "consoler:perform";
 
 	/** @var \Illuminate\Container\Container */
 	protected $container;
