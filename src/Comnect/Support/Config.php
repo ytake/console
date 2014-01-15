@@ -32,7 +32,7 @@ class Config implements ConfigInterface {
 				$config = $this->path('config') ."/$env/$filename.php";
 				if(file_exists($config))
 				{
-					return require_once $config;
+					return require $config;
 					break;
 				}
 			}
@@ -43,7 +43,7 @@ class Config implements ConfigInterface {
 		{
 			throw new \ErrorException("not found $config", 500);
 		}
-		return require_once $config;
+		return require $config;
 	}
 
 	/**
