@@ -53,10 +53,10 @@ class Config implements ConfigInterface {
 	 */
 	public function path($name)
 	{
-		$path = [
+		$path = array(
 			'root' => dirname(dirname(dirname(dirname(dirname(dirname(dirname(realpath(__FILE__)))))))),
 			'config' => dirname(dirname(dirname(dirname(dirname(dirname(dirname(realpath(__FILE__)))))))) . "/app/config",
-		];
+		);
 		return $path[$name];
 	}
 }

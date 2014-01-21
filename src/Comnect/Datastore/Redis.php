@@ -26,7 +26,7 @@ class Redis implements DatastoreInterface {
 	 */
 	public function connect($database = 'default')
 	{
-		$connection = $this->config->get('redis')[$database];
-		return new Client($connection);
+		$redis = $this->config->get('redis');
+		return new Client($redis[$database]);
 	}
 }
