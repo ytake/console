@@ -29,7 +29,8 @@ class Database implements DatastoreInterface{
 	 */
 	public function connect($database)
 	{
-		$connection = $this->config->get('database')['connections'][$database];
+		$db = $this->config->get('database');
+		$connection = $db['connections'][$database];
 		return $this->connection->make($connection);
 	}
 }
