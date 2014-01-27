@@ -1,6 +1,8 @@
 console
 =======
 
+see https://github.com/ytake/consoler
+
 php comsole application 
 Model & Controller
 
