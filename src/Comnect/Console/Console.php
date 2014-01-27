@@ -12,7 +12,10 @@ use Comnect\Console\Command;
 class Console extends SymfonyConsole {
 
 	/** @var \Symfony\Component\Console\Application */
-	private $_application;
+	protected $application;
+
+	/** @var \Comnect\Console\Controller */
+	protected $app;
 
 	/**
 	 * construct
@@ -20,22 +23,24 @@ class Console extends SymfonyConsole {
 	 * @param string $version
 	 *
 	 */
-	public function __construct($name = 'UNKNOWN', $version = 'UNKNOWN')
+	public function __construct(Controller $app, $name = 'UNKNOWN', $version = 'UNKNOWN')
 	{
 		parent::__construct($name, $version);
 		//
-		$this->_application = new SymfonyConsole();
+		$this->application = new SymfonyConsole();
+		$this->app = $app;
+
 		// register commands
 		$this->_addCommands();
 	}
 
 	/**
-	 * console boot
+	 * boot consoler
 	 */
 	public function boot()
 	{
-		// boot process
-		$this->_application->run();
+		// boot
+		$this->application->run();
 	}
 
 	/**
@@ -45,9 +50,8 @@ class Console extends SymfonyConsole {
 	private function _addCommands()
 	{
 		// performer
-		$this->_application->add(new \Comnect\Console\Command\ControllerCommand);
+		$this->application->add(new \Comnect\Console\Command\ControllerCommand($this->app));
 		// display version
-		$this->_application->add(new \Comnect\Console\Command\VersionCommand);
+		$this->application->add(new \Comnect\Console\Command\VersionCommand);
 	}
-
 }

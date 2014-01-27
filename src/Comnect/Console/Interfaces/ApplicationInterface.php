@@ -12,6 +12,6 @@ interface ApplicationInterface {
 	 * perform
 	 * @return mixed
 	 */
-	public function perform();
+	public function perform(array $array);
 
 }
