@@ -1,8 +1,9 @@
 {
     "name": "comnect/console",
-    "description": "php console",
+    "description": "php cli application package(kernel)",
     "minimum-stability": "alpha",
     "license": "MIT",
+    "keywords": ["console", "php", "cli"],
     "authors": [
         {
             "name": "yuuki.takezawa",
