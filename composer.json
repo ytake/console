@@ -15,7 +15,6 @@
         "symfony/console": "2.3.*",
         "illuminate/database": "4.0.*",
         "predis/predis": "0.*",
-        "monolog/monolog": "1.*",
         "swiftmailer/swiftmailer": "5.0.*"
     },
     "require-dev": {
