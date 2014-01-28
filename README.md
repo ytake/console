@@ -1,8 +1,8 @@
-php cli application package(kernel)
+comnect/console(kernel)
 =======
-
-php console application 
-Model & Controller
+easy php cli application package!
+ 
+like Model & Controller
 
 install
 ============
