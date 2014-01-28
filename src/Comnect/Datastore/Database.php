@@ -3,7 +3,7 @@ namespace Comnect\Datastore;
 
 use Comnect\Datastore\Interfaces\DatastoreInterface;
 use Comnect\Support\Config;
-use Illuminate\Database\Connectors\ConnectionFactory;
+use Illuminate\Database\Capsule\Manager as DatabaseManager;
 
 /**
  * Class Database
@@ -14,13 +14,19 @@ class Database implements DatastoreInterface{
 
 	/** @var \Comnect\Support\Config */
 	protected $config;
-	/** @var  \Illuminate\Database\Connectors\ConnectionFactory */
-	protected $connection;
+	/** @var \Illuminate\Database\Capsule\Manager  */
+	protected $manager;
+	/** @var \Illuminate\Database\Connection  */
+	protected $connector;
 
-	public function __construct(Config $config, ConnectionFactory $connection)
+	/**
+	 * @param Config $config
+	 * @param DatabaseManager $database
+	 */
+	public function __construct(Config $config, DatabaseManager $manager)
 	{
 		$this->config = $config;
-		$this->connection = $connection;
+		$this->manager = $manager;
 	}
 
 	/**
@@ -31,6 +37,9 @@ class Database implements DatastoreInterface{
 	{
 		$db = $this->config->get('database');
 		$connection = $db['connections'][$database];
-		return $this->connection->make($connection);
+		$this->manager->addConnection($connection, $database);
+		$this->manager->setAsGlobal();
+		$this->connector = $this->manager->connection($database);
+		return $this->connector;
 	}
 }

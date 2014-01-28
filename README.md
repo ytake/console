@@ -1,10 +1,8 @@
-console
+comnect/console(kernel)
 =======
-
-see https://github.com/ytake/consoler
-
-php comsole application 
-Model & Controller
+easy php cli application package!
+ 
+like Model & Controller
 
 install
 ============
