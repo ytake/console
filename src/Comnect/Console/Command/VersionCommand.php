@@ -14,7 +14,7 @@ class VersionCommand extends Command
 {
 	const COMMAND_NAME = "consoler:version";
 
-	const VERSION = '0.1.8-beta';
+	const VERSION = '0.1.9-alpha';
 
 	/**
 	 *

@@ -42,12 +42,4 @@ class Database implements DatastoreInterface{
 		$this->connector = $this->manager->connection($database);
 		return $this->connector;
 	}
-
-	/**
-	 *
-	 */
-	public function __destruct()
-	{
-		//var_dump($this->connector->getQueryLog());
-	}
 }
