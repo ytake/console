@@ -1,9 +1,7 @@
-console
+php cli application package(kernel)
 =======
 
-see https://github.com/ytake/consoler
-
-php comsole application 
+php console application 
 Model & Controller
 
 install
