@@ -13,6 +13,7 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/console": "2.3.*",
+        "illuminate/container": "4.0.*",
         "illuminate/database": "4.0.*",
         "predis/predis": "0.*",
         "swiftmailer/swiftmailer": "5.0.*"
