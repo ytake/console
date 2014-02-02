@@ -3,6 +3,7 @@ namespace Comnect\Datastore;
 
 use Comnect\Datastore\Interfaces\DatastoreInterface;
 use Comnect\Support\Config;
+use Comnect\Support\Logger;
 use Illuminate\Database\Capsule\Manager as DatabaseManager;
 
 /**
@@ -23,10 +24,11 @@ class Database implements DatastoreInterface{
 	 * @param Config $config
 	 * @param DatabaseManager $database
 	 */
-	public function __construct(Config $config, DatabaseManager $manager)
+	public function __construct(Config $config, DatabaseManager $manager, Logger $log)
 	{
 		$this->config = $config;
 		$this->manager = $manager;
+		$this->log = $log;
 	}
 
 	/**
@@ -41,5 +43,19 @@ class Database implements DatastoreInterface{
 		$this->manager->setAsGlobal();
 		$this->connector = $this->manager->connection($database);
 		return $this->connector;
+	}
+
+	/**
+	 * @return void
+	 */
+	public function __destruct()
+	{
+		if($this->connector != null)
+		{
+			if(!is_null($this->log->log()))
+			{
+				$this->log->log()->addDebug('query.log', $this->connector->getQueryLog());
+			}
+		}
 	}
 }
