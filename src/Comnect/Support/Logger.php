@@ -25,7 +25,8 @@ class Logger {
 	{
 		$this->container = $container;
 		$this->config = $config;
-		$this->container->bind('log', function(){
+
+		$this->container['log'] = $this->container->share(function(){
 			return new MonoLogger('comnect/console');
 		});
 	}

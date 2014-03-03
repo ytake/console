@@ -41,8 +41,7 @@ class Database implements DatastoreInterface{
 		$connection = $db['connections'][$database];
 		$this->manager->addConnection($connection, $database);
 		$this->manager->setAsGlobal();
-		$this->connector = $this->manager->connection($database);
-		return $this->connector;
+		return $this->manager->connection($database);
 	}
 
 	/**
