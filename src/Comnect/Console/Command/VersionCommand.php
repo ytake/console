@@ -35,7 +35,6 @@ class VersionCommand extends Command
 	{
 		$controller = $input->getArgument(self::COMMAND_NAME);
 		$text = "comnect/console <info>" .self::VERSION . "</info>";
-		$text .= "\n";
 		$output->writeln($text);
 	}
 }

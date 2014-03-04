@@ -17,8 +17,5 @@ class Controller extends Container implements ApplicationInterface{
 	 * perform
 	 * @return mixed|void
 	 */
-	public function perform(array $array)
-	{
-
-	}
+	public function perform(array $array){}
 }

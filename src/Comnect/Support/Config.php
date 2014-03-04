@@ -16,13 +16,7 @@ class Config implements ConfigInterface {
 	 */
 	public function get($filename)
 	{
-		$environmentFile = dirname(dirname(dirname(dirname(dirname(dirname(dirname(realpath(__FILE__)))))))) . "/app/config/environment.php";
-		if(!file_exists($environmentFile))
-		{
-			throw new \ErrorException("not found $environmentFile", 500);
-		}
-
-		$configure = require $environmentFile;
+		$configure = $this->_getEnvironmentFile();
 		foreach($configure as $env => $values)
 		{
 			$host = array_search(gethostname(), $values);
@@ -54,9 +48,47 @@ class Config implements ConfigInterface {
 	public function path($name)
 	{
 		$path = array(
-			'root' => dirname(dirname(dirname(dirname(dirname(dirname(dirname(realpath(__FILE__)))))))),
-			'config' => dirname(dirname(dirname(dirname(dirname(dirname(dirname(realpath(__FILE__)))))))) . "/app/config",
+			'root' => realpath(null),
+			'config' => realpath(null) . "/app/config",
+			'storage' => realpath(null) . "/app/storage",
 		);
 		return $path[$name];
+	}
+
+	/**
+	 * get environmnet
+	 * @return int|string
+	 */
+	public function getEnvironment()
+	{
+		$configure = $this->_getEnvironmentFile();
+		foreach($configure as $env => $values)
+		{
+			$host = array_search(gethostname(), $values);
+			// not found
+			if($host !== false)
+			{
+				return $env;
+				break;
+			}
+		}
+		// default environment
+		return 'production';
+	}
+
+	/**
+	 * get environment file
+	 * @access private
+	 * @return array
+	 * @throws \ErrorException
+	 */
+	private function _getEnvironmentFile()
+	{
+		$environmentFile = $this->path('config') . "/environment.php";
+		if(!file_exists($environmentFile))
+		{
+			throw new \ErrorException("not found $environmentFile", 500);
+		}
+		return require $environmentFile;
 	}
 }
