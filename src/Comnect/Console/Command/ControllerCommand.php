@@ -73,12 +73,13 @@ class ControllerCommand extends Command
 		// perform process
 		try {
 			// path to perform
-			$this->app->make($controller)->perform(123);
+			$this->app->make($controller)->perform($array);
 			$output->writeln("perform controller:$controller");
-
+		}catch(\Exception $e){
+			throw new \Exception($e->getMessage(), 500);
 		// reflectionException
 		}catch(\ReflectionException $e){
-			$output->writeln("<error>{$e->getMessage()}</error>");
+			throw new \ReflectionException($e->getMessage(), 500);
 		}
 	}
 }
