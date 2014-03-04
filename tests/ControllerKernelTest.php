@@ -5,7 +5,7 @@ use Comnect\Console\Controller;
  * @author yuuki.takezawa<yuuki.takezawa@excite.jp>
  * 2014/02/17 17:38
  */
-class ControllerTest extends \Comnect\Testing\TestCase
+class ControllerKernelTest extends \Comnect\Testing\TestCase
 {
 	protected $controller;
 
