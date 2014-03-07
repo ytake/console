@@ -3,6 +3,8 @@ namespace Comnect\Console;
 use Comnect\Console\Command\ControllerCommand;
 use Comnect\Console\Command\VersionCommand;
 use Symfony\Component\Console\Application as SymfonyConsole;
+use Symfony\Component\Console\Command\Command;
+
 /**
  * Class Console
  * @package Comnect\Console
@@ -14,6 +16,8 @@ class Console extends SymfonyConsole {
 	protected $application;
 	/** @var \Comnect\Console\Controller */
 	protected $app;
+	/** @var array  */
+	protected $commands = array();
 
 	/**
 	 * @param Controller $app
@@ -26,8 +30,6 @@ class Console extends SymfonyConsole {
 		//
 		$this->application = new SymfonyConsole();
 		$this->app = $app;
-		// register commands
-		$this->_addCommands();
 	}
 
 	/**
@@ -35,6 +37,8 @@ class Console extends SymfonyConsole {
 	 */
 	public function boot()
 	{
+		// register commands
+		$this->_addCommands();
 		// boot
 		$this->application->run();
 	}
@@ -49,5 +53,21 @@ class Console extends SymfonyConsole {
 		$this->application->add(new ControllerCommand($this->app));
 		// display version
 		$this->application->add(new VersionCommand);
+		if(count($this->commands))
+		{
+			foreach($this->commands as $command)
+			{
+				$this->application->add($command);
+			}
+		}
+	}
+
+	/**
+	 * add user commands
+	 * @param Command $class
+	 */
+	public function addCommand(Command $class)
+	{
+		$this->commands[] = $class;
 	}
 }
