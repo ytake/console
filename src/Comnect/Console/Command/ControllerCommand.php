@@ -19,8 +19,6 @@ class ControllerCommand extends Command
 
 	/** @var \Comnect\Console\Controller */
 	protected $app;
-	/** @var \Comnect\Console\Perform */
-	protected $perform;
 
 	/**
 	 * @param Controller $app
