@@ -71,6 +71,7 @@ class ControllerCommand extends Command
 		// perform process
 		try {
 			// path to perform
+			$this->app->bind('Comnect\Support\Interfaces\LogInterface', 'Comnect\Support\Logger');
 			$this->app->make($controller)->perform($array);
 			$output->writeln("perform controller:$controller");
 		}catch(\Exception $e){

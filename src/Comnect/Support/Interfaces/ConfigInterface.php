@@ -1,5 +1,5 @@
 <?php
-namespace Comnect\Support\Config\Interfaces;
+namespace Comnect\Support\Interfaces;
 
 /**
  * Interface ConfigInterface

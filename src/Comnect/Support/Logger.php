@@ -1,5 +1,6 @@
 <?php
 namespace Comnect\Support;
+use Comnect\Support\Interfaces\LogInterface;
 use Monolog\Logger as MonoLogger;
 use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
@@ -8,7 +9,7 @@ use Illuminate\Container\Container;
  * @package Comnect\Support
  * @author yuuki.takezawa<yuuki.takezawa@comnect.jp.net>
  */
-class Logger {
+class Logger implements LogInterface{
 
 	/** @var \Illuminate\Container\Container  */
 	protected $container;
