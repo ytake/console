@@ -3,7 +3,7 @@ namespace Comnect\Datastore;
 
 use Comnect\Datastore\Interfaces\DatastoreInterface;
 use Comnect\Support\Config;
-use Comnect\Support\Logger;
+use Comnect\Support\Interfaces\LogInterface;
 use Illuminate\Database\Capsule\Manager as DatabaseManager;
 
 /**
@@ -19,12 +19,14 @@ class Database implements DatastoreInterface{
 	protected $manager;
 	/** @var \Illuminate\Database\Connection  */
 	protected $connector;
+	/** @var \Comnect\Support\Interfaces\LogInterface  */
+	protected $log;
 
 	/**
 	 * @param Config $config
 	 * @param DatabaseManager $database
 	 */
-	public function __construct(Config $config, DatabaseManager $manager, Logger $log)
+	public function __construct(Config $config, DatabaseManager $manager, LogInterface $log)
 	{
 		$this->config = $config;
 		$this->manager = $manager;

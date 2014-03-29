@@ -1,7 +1,7 @@
 <?php
 namespace Comnect\Support;
 
-use Comnect\Support\Config\Interfaces\ConfigInterface;
+use Comnect\Support\Interfaces\ConfigInterface;
 /**
  * Class Config
  * @package Comnect\Support
