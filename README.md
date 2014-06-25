@@ -1,5 +1,6 @@
 comnect/console(kernel)
 =======
+**DEPRECATED**
 easy php cli application package!
  
 like Model & Controller
