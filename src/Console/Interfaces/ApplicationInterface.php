@@ -6,11 +6,12 @@ namespace Comnect\Console\Interfaces;
  * @package Comnect\Console\Interfaces
  * @author yuuki.takezawa<yuuki.takezawa@comnect.jp.net>
  */
-interface ApplicationInterface {
+interface ApplicationInterface
+{
 
-	/**
-	 * perform
-	 * @return mixed
-	 */
-	public function perform(array $array);
+    /**
+     * @param array $array
+     * @return mixed
+     */
+    public function perform(array $array);
 }
