@@ -33,9 +33,10 @@ class Logger implements LogInterface
         $this->container = $container;
         $this->config = $config;
 
-        $this->container['log'] = $this->container->share(function(){
-            return new MonoLogger('comnect/console');
-        });
+        $this->container['log'] = $this->container->share(function() {
+                return new MonoLogger('comnect/console');
+            }
+        );
     }
 
     /**
@@ -47,8 +48,7 @@ class Logger implements LogInterface
     {
         $logConfigure = $this->config->get('log');
         $path = (is_null($path)) ? $this->config->path('storage') ."/logs/". $logConfigure['filename'] : $path;
-        if(!is_null($path) && $logConfigure['debug'] !== false)
-        {
+        if(!is_null($path) && $logConfigure['debug'] !== false) {
             $this->log = $this->container->make('log');
             $this->log->pushHandler(new StreamHandler($path, $level));
             return $this->log;

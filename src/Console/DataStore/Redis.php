@@ -12,21 +12,21 @@ use Predis\Client;
  */
 class Redis implements DatastoreInterface {
 
-	/** @var \Comnect\Support\Config */
-	protected $config;
+    /** @var \Comnect\Support\Config */
+    protected $config;
 
-	public function __construct(Config $config)
-	{
-		$this->config = $config;
-	}
+    public function __construct(Config $config)
+    {
+        $this->config = $config;
+    }
 
-	/**
-	 *
-	 * @param array $database
-	 */
-	public function connect($database = 'default')
-	{
-		$redis = $this->config->get('redis');
-		return new Client($redis[$database]);
-	}
+    /**
+     *
+     * @param array $database
+     */
+    public function connect($database = 'default')
+    {
+        $redis = $this->config->get('redis');
+        return new Client($redis[$database]);
+    }
 }

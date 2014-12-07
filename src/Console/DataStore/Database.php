@@ -20,11 +20,14 @@ class Database implements DatastoreInterface
     /** @var DatabaseManager  */
     protected $manager;
 
-    /** @var Connection  */
+    /** @var \Illuminate\Database\Connection  */
     protected $connector;
 
     /** @var LogInterface  */
     protected $log;
+
+    /** @var  string */
+    protected $database;
 
     /**
      * @param ConfigInterface $config
@@ -56,10 +59,9 @@ class Database implements DatastoreInterface
         $connection = $dbConfig['connections'][$database];
         $this->manager->addConnection($connection, $database);
 
-        //$this->manager->setCacheManager(new \Illuminate\Cache\CacheManager($container));
         $this->manager->setAsGlobal();
-
-        return $this->manager->connection($database);
+        $this->connector = $this->manager->connection($database);
+        return $this->connector;
     }
 
     /**
@@ -67,12 +69,13 @@ class Database implements DatastoreInterface
      */
     public function __destruct()
     {
-        if($this->connector != null)
-        {
-            if(!is_null($this->log->log()))
-            {
+        if($this->connector != null) {
+            if(!is_null($this->log->log())) {
                 $this->log->log()->addDebug('query.log', $this->connector->getQueryLog());
             }
         }
+        /** @var \Illuminate\Database\DatabaseManager $database */
+        $database = $this->manager->getDatabaseManager();
+        $database->disconnect();
     }
 }

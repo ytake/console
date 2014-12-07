@@ -4,7 +4,6 @@ namespace Comnect\Console;
 use Illuminate\Container\Container;
 use Comnect\Console\Interfaces\ApplicationInterface;
 
-
 /**
  * Class Controller
  * @package Comnect\Console
