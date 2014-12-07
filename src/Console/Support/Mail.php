@@ -113,11 +113,11 @@ class Mail
                 $transport = \Swift_SmtpTransport::newInstance(
                     $mailConfigure['host'], $mailConfigure['port'], $mailConfigure['protocol']);
 
-                if(!is_null($mailConfigure['account'])){
+                if(!is_null($mailConfigure['account'])) {
                     $transport->setUsername($mailConfigure['account']);
                 }
 
-                if(!is_null($mailConfigure['password'])){
+                if(!is_null($mailConfigure['password'])) {
                     $transport->setPassword($mailConfigure['password']);
                 }
                 break;

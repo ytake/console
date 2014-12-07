@@ -19,15 +19,12 @@ class Config implements ConfigInterface
     public function get($filename)
     {
         $configure = $this->_getEnvironmentFile();
-        foreach($configure as $env => $values)
-        {
+        foreach($configure as $env => $values) {
             $host = array_search(gethostname(), $values);
             // not found
-            if($host !== false)
-            {
+            if($host !== false) {
                 $config = $this->path('config') ."/$env/$filename.php";
-                if(file_exists($config))
-                {
+                if(file_exists($config)) {
                     return require $config;
                     break;
                 }
@@ -35,8 +32,7 @@ class Config implements ConfigInterface
         }
         // default or production file
         $config = $this->path('config') ."/". $filename . ".php";
-        if(!file_exists($config))
-        {
+        if(!file_exists($config)) {
             throw new \ErrorException("not found $config", 500);
         }
         return require $config;
@@ -64,12 +60,10 @@ class Config implements ConfigInterface
     public function getEnvironment()
     {
         $configure = $this->_getEnvironmentFile();
-        foreach($configure as $env => $values)
-        {
+        foreach($configure as $env => $values) {
             $host = array_search(gethostname(), $values);
             // not found
-            if($host !== false)
-            {
+            if($host !== false) {
                 return $env;
                 break;
             }
@@ -87,8 +81,7 @@ class Config implements ConfigInterface
     private function _getEnvironmentFile()
     {
         $environmentFile = $this->path('config') . "/environment.php";
-        if(!file_exists($environmentFile))
-        {
+        if(!file_exists($environmentFile)) {
             throw new \ErrorException("not found $environmentFile", 500);
         }
         return require $environmentFile;
